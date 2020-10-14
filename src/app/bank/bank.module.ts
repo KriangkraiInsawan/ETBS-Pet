@@ -5,12 +5,14 @@ import { ListComponent } from './list/list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { BankService } from './bank.service';
 
 
 const routes : Routes = [
   {
     path  : "",
-    component:ListComponent
+    component:ListComponent,
+    resolve :{items:BankService}
   }
 ]
 

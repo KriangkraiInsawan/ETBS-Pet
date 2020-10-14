@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { BankService } from '../bank.service';
 import { ListDataSource, ListItem } from './list-datasource';
 
 @Component({
@@ -17,17 +18,30 @@ export class ListComponent implements AfterViewInit, OnInit {
   dataSource: ListDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
-  constructor(private router:ActivatedRoute) {
+  displayedColumns = ['id', 'name', "menu"];
+  constructor(private route: ActivatedRoute, private bankService: BankService) {
 
   }
   ngOnInit() {
-    this.dataSource = new ListDataSource(this.router.snapshot.data.items.data);
+    this.dataSource = new ListDataSource(this.route.snapshot.data.items.data);
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  deleteData(id) {
+
+    this.bankService.deleteData(id).subscribe(res => {
+      console.log(res);
+      this.bankService.getDataList()
+
+      this.bankService.getDataList()
+        .subscribe(res => this.table.dataSource = res.data);
+
+    });
+
   }
 }

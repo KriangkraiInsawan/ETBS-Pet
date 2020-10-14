@@ -6,13 +6,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { BankService } from './bank.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
-
-const routes : Routes = [
+const routes: Routes = [
   {
-    path  : "",
-    component:ListComponent,
-    resolve :{items:BankService}
+    path: "",
+    component: ListComponent,
+    resolve: { items: BankService }
+  },
+  {
+    path: "form/:id"
   }
 ]
 
@@ -23,7 +28,11 @@ const routes : Routes = [
     RouterModule.forChild(routes),
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+
   ]
 })
 export class BankModule { }

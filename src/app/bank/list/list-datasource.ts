@@ -44,8 +44,9 @@ export class ListDataSource extends DataSource<ListItem> {
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(private items:any[]) {
     super();
+    this.data=items;
   }
 
   /**

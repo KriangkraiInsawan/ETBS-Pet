@@ -33,15 +33,10 @@ export class ListComponent implements AfterViewInit, OnInit {
   }
 
   deleteData(id) {
-
     this.bankService.deleteData(id).subscribe(res => {
       console.log(res);
       this.bankService.getDataList()
-
-      this.bankService.getDataList()
         .subscribe(res => this.table.dataSource = res.data);
-
     });
-
   }
 }

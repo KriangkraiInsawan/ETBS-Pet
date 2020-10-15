@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
@@ -9,6 +9,12 @@ import { BankService } from './bank.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { FormComponent } from './form/form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -17,12 +23,13 @@ const routes: Routes = [
     resolve: { items: BankService }
   },
   {
-    path: "form/:id"
-  }
+    path: "form/:id",
+    component:FormComponent
+  },
 ]
 
 @NgModule({
-  declarations: [ListComponent],
+  declarations: [ListComponent, FormComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -32,6 +39,11 @@ const routes: Routes = [
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
 
   ]
 })

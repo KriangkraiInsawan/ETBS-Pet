@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { BankService } from '../bank.service';
 
 @Component({
   selector: 'app-form',
@@ -7,6 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
+
+id:any;
+bankdata:any;
+
   addressForm = this.fb.group({
     company: null,
     firstName: [null, Validators.required],
@@ -85,9 +91,16 @@ export class FormComponent {
     {name: 'Wyoming', abbreviation: 'WY'}
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private bankService:BankService,private route:ActivatedRoute) {}
 
   onSubmit() {
     alert('Thanks!');
   }
+
+  ngOnInit(): void {
+// console.log(this.route.snapshot.data.item.data)
+this.bankdata = this.route.snapshot.data.item.data;
+console.log(this.bankdata)
+  }
+
 }

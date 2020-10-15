@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 const routes: Routes = [
   {
     path: "",
@@ -24,7 +25,8 @@ const routes: Routes = [
   },
   {
     path: "form/:id",
-    component:FormComponent
+    component: FormComponent,
+    resolve: { item: BankService }
   },
 ]
 
